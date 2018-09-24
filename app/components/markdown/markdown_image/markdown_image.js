@@ -23,6 +23,8 @@ import ImageCacheManager from 'app/utils/image_cache_manager';
 import {previewImageAtIndex, calculateDimensions} from 'app/utils/images';
 import {normalizeProtocol} from 'app/utils/url';
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 const ANDROID_MAX_HEIGHT = 4096;
 const ANDROID_MAX_WIDTH = 4096;
 const VIEWPORT_IMAGE_OFFSET = 66;
@@ -241,14 +243,10 @@ export default class MarkdownImage extends React.Component {
             }
         } else if (this.state.failed) {
             image = (
-                <Text style={this.props.errorTextStyle}>
-                    <FormattedText
-                        id='mobile.markdown.image.error'
-                        defaultMessage='Image failed to load:'
-                    />
-                    {' '}
-                    {this.props.children}
-                </Text>
+                <Icon
+                    name={'image-broken'}
+                    size={18}
+                />
             );
         }
 
